@@ -8,6 +8,12 @@ if (!isset($_SESSION['admin_id']) || empty($_GET['id'])) {
     exit();
 }
 
+// 1bis. Protection CSRF : le jeton doit correspondre à celui de la session.
+if (!isset($_GET['csrf']) || !hash_equals($_SESSION['csrf'] ?? '', $_GET['csrf'])) {
+    http_response_code(403);
+    exit('Requête refusée (jeton de sécurité invalide).');
+}
+
 $id_client = (int) $_GET['id'];
 
 try {
@@ -44,6 +50,8 @@ try {
     exit();
 
 } catch (PDOException $e) {
-    die("Erreur lors de la suppression : " . $e->getMessage());
+    error_log('Erreur suppression client : ' . $e->getMessage());
+    header("Location: admin.php?tab=clients&msg=erreur");
+    exit();
 }
 ?>

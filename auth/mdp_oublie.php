@@ -106,7 +106,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['email'])) {
             $message = "<div class='success-message'>Si cette adresse email existe dans notre système, un lien de réinitialisation vient de vous être envoyé.</div>";
             
         } catch (Exception $e) {
-            $message = "<div class='error-message'><strong>Erreur technique :</strong> L'email n'a pas pu être envoyé. Erreur : {$mail->ErrorInfo}</div>";
+            // On journalise l'erreur mais on affiche le même message neutre :
+            // cela évite de divulguer un détail technique et de révéler si l'email existe.
+            error_log('Erreur envoi e-mail réinitialisation : ' . $mail->ErrorInfo);
+            $message = "<div class='success-message'>Si cette adresse email existe dans notre système, un lien de réinitialisation vient de vous être envoyé.</div>";
         }
     } else {
         $message = "<div class='success-message'>Si cette adresse email existe dans notre système, un lien de réinitialisation vient de vous être envoyé.</div>";

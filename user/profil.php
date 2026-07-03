@@ -76,7 +76,7 @@ try {
     $stmt->execute([':id' => $user_id]);
     $user = $stmt->fetch();
 } catch (PDOException $e) {
-    die("Erreur SQL : " . $e->getMessage());
+    error_log("Erreur SQL : " . $e->getMessage()); http_response_code(500); die("Service momentanément indisponible. Merci de réessayer plus tard.");
 }
 
 $profil_complet = (!empty($user['telephone']) && !empty($user['adresse']) && !empty($user['ville']) && !empty($user['code_postal']) && !empty($user['date_de_naissance']));

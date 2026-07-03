@@ -47,7 +47,7 @@ $csrf = $_SESSION['csrf'];
 
 // Garde CSRF : les actions qui modifient la base doivent présenter le bon jeton.
 // Un lien piégé venant d'un autre site ne connaît pas ce jeton et sera rejeté.
-$actions_sensibles = ['valider_doc', 'del_template', 'del_doc'];
+$actions_sensibles = ['valider_doc', 'del_template', 'del_doc', 'notifier_refus', 'annuler_ajout_client'];
 if (isset($_GET['action']) && in_array($_GET['action'], $actions_sensibles, true)) {
     if (!isset($_GET['csrf']) || !hash_equals($_SESSION['csrf'], $_GET['csrf'])) {
         http_response_code(403);
@@ -780,12 +780,12 @@ if ($filter_attente === 1) {
                                         }      
                                         if($nb_attente === 0 && $nb_refus > 0):
                                     ?>
-                                        <a class="btn-action" style="color: #f59e0b;" href="admin.php?action=notifier_refus&id_user=<?= $client['id'] ?>&tab=clients" onclick="return confirm('Êtes-vous sûr de vouloir envoyer le mail à ce client ? Il recevra le(s) nom(s) des documents ainsi que le(s) motif(s) !')">
+                                        <a class="btn-action" style="color: #f59e0b;" href="admin.php?action=notifier_refus&csrf=<?= $csrf ?>&id_user=<?= $client['id'] ?>&tab=clients" onclick="return confirm('Êtes-vous sûr de vouloir envoyer le mail à ce client ? Il recevra le(s) nom(s) des documents ainsi que le(s) motif(s) !')">
                                             ✉️ Envoyer le bilan
                                         </a><br><br>
                                     <?php endif; ?>
                                     <a class="btn-action" href="edit.php?id=<?= $client['id'] ?>">Éditer</a><br><br>
-                                    <a class="btn-action delete" href="delete.php?id=<?= $client['id'] ?>" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce client ? Cette action est irréversible.');">Supprimer</a>
+                                    <a class="btn-action delete" href="delete.php?id=<?= $client['id'] ?>&csrf=<?= $csrf ?>" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce client ? Cette action est irréversible.');">Supprimer</a>
                                 </td>
                             </tr>
                         <?php endforeach; ?>
@@ -898,7 +898,7 @@ if ($filter_attente === 1) {
 
                             <?php if ($etape_actuelle === 2): ?>
                                 <div class="form-group full-width" style="display: flex; gap: 15px;">
-                                    <a href="admin.php?action=annuler_ajout_client" class="btn-action delete" style="padding: 12px; border: 1px solid #991b1b; border-radius: 8px; text-align: center; text-decoration: none;">Recommencer</a>
+                                    <a href="admin.php?action=annuler_ajout_client&csrf=<?= $csrf ?>" class="btn-action delete" style="padding: 12px; border: 1px solid #991b1b; border-radius: 8px; text-align: center; text-decoration: none;">Recommencer</a>
                                     <button type="submit" class="btn-submit" style="flex: 1; margin: 0;">Suivant : Choisir la date d'examen</button>
                                 </div>
                             <?php endif; ?>
@@ -922,7 +922,7 @@ if ($filter_attente === 1) {
                             </div>
 
                             <div class="form-group full-width" style="display: flex; gap: 15px;">
-                                <a href="admin.php?action=annuler_ajout_client" class="btn-action delete" style="padding: 12px; border: 1px solid #991b1b; border-radius: 8px; text-align: center; text-decoration: none;">Recommencer</a>
+                                <a href="admin.php?action=annuler_ajout_client&csrf=<?= $csrf ?>" class="btn-action delete" style="padding: 12px; border: 1px solid #991b1b; border-radius: 8px; text-align: center; text-decoration: none;">Recommencer</a>
                                 <?php if (count($sessions_disponibles) > 0): ?>
                                     <button type="submit" class="btn-submit" style="flex: 1; margin: 0;">Inviter le client</button>
                                 <?php endif; ?>

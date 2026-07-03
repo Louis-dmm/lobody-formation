@@ -42,9 +42,9 @@ try {
     }
 
 } catch (PDOException $e) {
-    die("<div style='background:#ffdddd; color:red; padding:20px;'>
-            <h2>Erreur de Connexion à la Base de Données</h2>
-            <p><strong>Détail technique :</strong> " . $e->getMessage() . "</p>
-         </div>");
+    // Le détail technique est journalisé côté serveur, jamais affiché à l'utilisateur.
+    error_log('Erreur de connexion BDD : ' . $e->getMessage());
+    http_response_code(500);
+    die("Service momentanément indisponible. Merci de réessayer plus tard.");
 }
 ?>

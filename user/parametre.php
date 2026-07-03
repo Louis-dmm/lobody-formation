@@ -64,7 +64,7 @@ try {
     $stmt->execute([':id' => $user_id]);
     $user = $stmt->fetch();
 } catch (PDOException $e) {
-    die("Erreur SQL : " . $e->getMessage());
+    error_log("Erreur SQL : " . $e->getMessage()); http_response_code(500); die("Service momentanément indisponible. Merci de réessayer plus tard.");
 }
 
 function genererInitiale($nom_de_famille){

@@ -138,7 +138,7 @@ try {
     $pourcentage = ($total_reqs > 0) ? round(($valides / $total_reqs) * 100) : 0;
 
 } catch (PDOException $e) {
-    die("Erreur SQL : " . $e->getMessage());
+    error_log("Erreur SQL : " . $e->getMessage()); http_response_code(500); die("Service momentanément indisponible. Merci de réessayer plus tard.");
 }
 
 function genererInitiale($nom_de_famille){

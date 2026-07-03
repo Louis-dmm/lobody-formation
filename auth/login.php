@@ -51,6 +51,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $admin = $stmtAdmin->fetch();
 
             if ($admin && password_verify($password, $admin['mot_de_passe'])) {
+                // Anti-fixation de session : nouvel ID après connexion
+                session_regenerate_id(true);
                 $_SESSION['admin_id'] = $admin['id_admin'];
                 $_SESSION['user_nom'] = $admin['prenom'] . ' ' . $admin['nom'];
                 header("Location: ../admin/admin.php");
@@ -62,6 +64,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $user = $stmtUser->fetch();
 
             if ($user && password_verify($password, $user['mot_de_passe'])) {
+                // Anti-fixation de session : nouvel ID après connexion
+                session_regenerate_id(true);
                 $_SESSION['user_id'] = $user['id'];
                 $_SESSION['user_nom'] = $user['prenom'] . ' ' . $user['nom'];
                 header("Location: ../user/user.php");
@@ -73,7 +77,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             exit();
 
         } catch (PDOException $e) {
-            die("Erreur fatale SQL lors de la connexion : " . $e->getMessage());
+            error_log("Erreur SQL : " . $e->getMessage()); http_response_code(500); die("Service momentanément indisponible. Merci de réessayer plus tard.");
         }
     }
 }
