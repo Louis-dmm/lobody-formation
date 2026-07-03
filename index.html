@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Espace Client - Lobody Formation</title>
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="icon" type="image/png" href="assets/img/icone.png">
+</head>
+<body class="body_ok">
+
+    <main class="login-container">
+        <section class="glass-card">
+            
+            <header class="brand-header">
+                <img src="/assets/img/logo-formation-bleu-Copie-e1739893739311.png" alt="Logo Lobody Formation" class="logo">
+                <div class="decorative-bar" aria-hidden="true"></div>
+            </header>
+
+            <div class="form-section">
+                <h1>Connexion à votre espace</h1>
+                
+                <div id="error-alert" class="error-alert" role="alert" style="display: none;">
+                    Email ou mot de passe incorrect.
+                </div>
+                
+                <form action="auth/login.php" method="POST">
+                    
+                    <div class="input-group">
+                        <label for="email">Adresse email</label>
+                        <div class="input-wrapper">
+                            <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                            <input type="email" id="email" name="email" placeholder="Ex: jean.dupont@email.com" required>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="password">Mot de passe</label>
+                        <div class="input-wrapper">
+                            <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                            <input type="password" id="password" name="password" placeholder="••••••••" required>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <div class="cf-turnstile" data-sitekey="0x4AAAAAADI3oUryPnZZodpe" data-theme="light"></div>
+                    </div>
+
+                    <button type="submit" class="submit-btn">Se connecter</button>
+                </form>
+
+                <a href="auth/mdp_oublie.php" class="forgot-password">Mot de passe oublié ?</a>
+
+                <div class="liens_legaux_login">
+                    <a href="#modal_mentions">Mentions légales</a>
+                    <span class="separateur">|</span>
+                    <a href="#modal_confidentialite">Politique de confidentialité</a>
+                    <span class="separateur">|</span>
+                    <a href="#modal_cgv">CGV</a>
+                </div>
+            </div>
+        </section>
+    </main>
+<div id="modal_mentions" class="modal_plein_ecran">
+        <div class="contenu_modal_interieur">
+            <div class="entete_modal">
+                <h1 class="titre_noir">Mentions légales</h1>
+                <a href="#" class="fermer_modal" aria-label="Fermer">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </a>
+            </div>
+
+            <div class="bloc_legal">
+                <h3>1. Éditeur du site</h3>
+                <p><strong>Raison sociale : KPICREATION</strong><br>
+                Forme juridique : EURL (entreprise unipersonnelle à responsabilité limitée)<br>
+                Capital social : 1 000 €<br>
+                SIREN : 895 198 638<br>
+                SIRET (siège) : 895 198 638 00010<br>
+                Numéro TVA intracommunautaire : FR91895198638<br>
+                RCS : 895 198 638 R.C.S. Blois<br>
+                Code APE / NAF : 62.01Z - Programmation informatique<br>
+                Siège social : 10 Le Clos des Cerisiers, 41230 Vernou-en-Sologne, France<br>
+                Gérant : Kévin Piot<br>
+                Email : mairie@vernou-en-sologne.com</p>
+            </div>
+            <div class="bloc_legal">
+                <h3>2. Hébergement</h3>
+                <p>OVH SAS<br>
+                2 rue Kellermann<br>
+                59100 Roubaix - France<br>
+                Téléphone : 1007<br>
+                Site : ovhcloud.com</p>
+            </div>
+            <div class="bloc_legal">
+                <h3>3. Propriété intellectuelle et droits d'auteur</h3>
+                <p>L'utilisation de tout document provenant du site n'est autorisée qu'à titre d'information pour un usage privé. Toute reproduction ou utilisation à d'autres fins est expressément interdite. Les droits de propriété intellectuelle sur les éléments créés pour ce site sont la propriété exclusive de LOHR FORMATION.</p>
+            </div>
+            <div class="bloc_legal">
+                <h3>4. Responsabilité</h3>
+                <p>Nous nous s'efforçons d'assurer l'exactitude des informations diffusées. Toutefois, l'entreprise décline toute responsabilité pour toute imprécision, omission, ou pour tous dommages (directs ou indirects) résultant de l'accès au site, de l'impossibilité d'y accéder, ou d'une intrusion frauduleuse d'un tiers.</p>
+            </div>
+            <div class="bloc_legal">
+                <h3>5. Sécurité des échanges</h3>
+                <p>La confidentialité des messages transmis par l'intermédiaire d'Internet ne peut être garantie à 100% avant leur réception sur nos serveurs sécurisés. Évitez de transmettre des informations extrêmement sensibles par simple message électronique non sécurisé.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal_confidentialite" class="modal_plein_ecran">
+        <div class="contenu_modal_interieur">
+            <div class="entete_modal">
+                <h1 class="titre_noir">Politique de confidentialité</h1>
+                <a href="#" class="fermer_modal" aria-label="Fermer">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </a>
+            </div>
+
+            <div class="bloc_legal">
+                <h3>1. Informations collectées</h3>
+                <p>Nous collectons uniquement les informations personnelles strictement nécessaires à la gestion de votre dossier (nom, prénom, adresse email, numéro de téléphone, adresse postale) ainsi que des données techniques de navigation basiques pour des raisons de sécurité.</p>
+            </div>
+            <div class="bloc_legal">
+                <h3>2. Utilisation et Partage des informations</h3>
+                <p>Vos informations sont utilisées pour fournir nos services, gérer votre dossier de formation et sécuriser notre plateforme. Nous ne partageons pas vos informations personnelles avec des tiers, à l'exception de nos prestataires de services techniques stricts (ex. hébergeurs) ou en cas d'obligation légale.</p>
+            </div>
+            <div class="bloc_legal">
+                <h3>3. Protection des données</h3>
+                <p>Nous mettons en œuvre des mesures de sécurité techniques et organisationnelles appropriées pour protéger vos données personnelles contre l'accès, la modification ou la destruction non autorisés.</p>
+            </div>
+            <div class="bloc_legal">
+                <h3>4. Vos droits (RGPD)</h3>
+                <p>Conformément au Règlement Général sur la Protection des Données (RGPD) et à la loi "Informatique et Libertés", vous disposez d'un droit d'accès, de rectification, d'opposition et de suppression de vos données. Pour l'exercer, contactez-nous par email à contact@example.com ou par voie postale à notre siège social.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal_cgv" class="modal_plein_ecran">
+        <div class="contenu_modal_interieur">
+            <div class="entete_modal">
+                <h1 class="titre_noir">Conditions Générales de Vente</h1>
+                <a href="#" class="fermer_modal" aria-label="Fermer">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </a>
+            </div>
+
+            <div class="bloc_legal">
+                <h3>1. Champ d'application</h3>
+                <p>Les présentes CGV s'appliquent à toutes les ventes de prestations et formations réalisées par LOHR FORMATION (15 chemin des Grandes Vignes, 38180 SEYSSINS - SIRET : 887 585 255 000 29). La validation d'une commande implique l'acceptation sans réserve de ces conditions.</p>
+            </div>
+            <div class="bloc_legal">
+                <h3>2. Commandes et Tarifs</h3>
+                <p>Toute commande passée implique une obligation de paiement. Les prix sont indiqués en euros, toutes taxes comprises (TTC). LOHR FORMATION se réserve le droit de modifier ses prix, mais les services sont facturés sur la base des tarifs en vigueur au moment de la commande.</p>
+            </div>
+            <div class="bloc_legal">
+                <h3>3. Droit de rétractation et Annulation</h3>
+                <p><strong>Rétractation :</strong> Le client dispose d'un délai de 14 jours pour se rétracter. Cependant, ce droit ne peut être exercé pour les prestations pleinement exécutées ou commencées avec l'accord du client avant la fin de ce délai.<br>
+                <strong>Annulation :</strong> Un rendez-vous peut être annulé ou reporté jusqu'à 72 heures à l'avance. Moins de 72 heures avant, aucun remboursement ou avoir ne sera accordé (sauf cas de force majeure).</p>
+            </div>
+            <div class="bloc_legal">
+                <h3>4. Responsabilité et Obligations</h3>
+                <p>Les prestations de LOHR FORMATION (formations, coaching) sont des services immatériels. L'entreprise s'engage à fournir ses services avec professionnalisme selon une <strong>obligation de moyens</strong>. Aucune garantie de résultat n'est apportée quant aux effets sur le client. La responsabilité de LOHR FORMATION ne saurait être engagée en cas de mauvaise utilisation des conseils ou de force majeure.</p>
+            </div>
+            <div class="bloc_legal">
+                <h3>5. Médiation de la consommation</h3>
+                <p>Conformément au code de la consommation, en cas de litige, vous pouvez recourir au service de médiation : CNPM – MEDIATION DE LA CONSOMMATION. Réclamation possible en ligne sur https://cnpm-mediation-consommation.eu ou par voie postale (27 avenue de la libération - 42400 Saint-Chamond).</p>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.has('erreur')) {
+                document.getElementById('error-alert').style.display = 'block';
+                window.history.replaceState({}, document.title, window.location.pathname);
+            }
+        });
+        
+    </script>
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+</body>
+</html>
